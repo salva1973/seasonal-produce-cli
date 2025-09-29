@@ -1,0 +1,22 @@
+{
+  "name": "seasonal-produce-cli",
+  "version": "1.0.0",
+  "description": "CLI to print seasonal fruit & vegetables for Bologna (Northern Italy) by season or month.",
+  "bin": {
+    "seasonal-produce": "bin/seasonal-produce.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cli",
+    "seasonal",
+    "produce",
+    "fruit",
+    "vegetables",
+    "bologna",
+    "italy"
+  ],
+  "license": "MIT"
+}
