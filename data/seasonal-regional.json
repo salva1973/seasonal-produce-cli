@@ -1,0 +1,133 @@
+{
+  "source": "Regional/Institutional calendars (Emilia-Romagna / Italy-wide)",
+  "months": [
+    {
+      "fruits": {
+        "it": ["arance", "mandarini", "kiwi", "mele", "pere"],
+        "en": ["oranges", "tangerines", "kiwifruit", "apples", "pears"]
+      },
+      "vegetables": {
+        "it": [
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "finocchi",
+          "porri",
+          "radicchio"
+        ],
+        "en": [
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "fennel",
+          "leeks",
+          "radicchio"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["arance", "mandarini", "limoni", "kiwi"],
+        "en": ["oranges", "tangerines", "lemons", "kiwifruit"]
+      },
+      "vegetables": {
+        "it": ["cavoli", "cavolfiore", "broccoli", "finocchi", "bietole"],
+        "en": ["cabbages", "cauliflower", "broccoli", "fennel", "chard"]
+      }
+    },
+    {
+      "fruits": { "it": ["kiwi", "limoni"], "en": ["kiwifruit", "lemons"] },
+      "vegetables": {
+        "it": ["asparagi", "carciofi", "spinaci", "lattuga", "piselli"],
+        "en": ["asparagus", "artichokes", "spinach", "lettuce", "peas"]
+      }
+    },
+    {
+      "fruits": { "it": ["fragole"], "en": ["strawberries"] },
+      "vegetables": {
+        "it": ["asparagi", "fave", "piselli", "cipollotti"],
+        "en": ["asparagus", "broad beans", "peas", "spring onions"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["fragole", "ciliegie"],
+        "en": ["strawberries", "cherries"]
+      },
+      "vegetables": {
+        "it": ["zucchine", "fave", "lattuga"],
+        "en": ["zucchini", "broad beans", "lettuce"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["ciliegie", "albicocche", "pesche"],
+        "en": ["cherries", "apricots", "peaches"]
+      },
+      "vegetables": {
+        "it": ["zucchine", "fagiolini", "pomodori"],
+        "en": ["zucchini", "green beans", "tomatoes"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["pesche", "susine", "meloni", "angurie"],
+        "en": ["peaches", "plums", "melons", "watermelons"]
+      },
+      "vegetables": {
+        "it": ["pomodori", "melanzane", "peperoni", "cetrioli"],
+        "en": ["tomatoes", "eggplants", "peppers", "cucumbers"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["pesche", "fichi", "uva precoce"],
+        "en": ["peaches", "figs", "early grapes"]
+      },
+      "vegetables": {
+        "it": ["pomodori", "peperoni", "zucchine"],
+        "en": ["tomatoes", "peppers", "zucchini"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["uva", "fichi", "mele nuove", "pere nuove"],
+        "en": ["grapes", "figs", "new apples", "new pears"]
+      },
+      "vegetables": {
+        "it": ["zucca", "peperoni", "melanzane"],
+        "en": ["pumpkin", "peppers", "eggplants"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["mele", "pere", "melograni", "cachi"],
+        "en": ["apples", "pears", "pomegranates", "persimmons"]
+      },
+      "vegetables": {
+        "it": ["zucca", "cavolfiore", "broccoli", "radicchio"],
+        "en": ["pumpkin", "cauliflower", "broccoli", "radicchio"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["mele", "pere", "kiwi", "agrumi iniziali"],
+        "en": ["apples", "pears", "kiwifruit", "early citrus"]
+      },
+      "vegetables": {
+        "it": ["cavoli", "finocchi", "porri", "bietole"],
+        "en": ["cabbages", "fennel", "leeks", "chard"]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["arance", "mandarini", "clementine", "kiwi"],
+        "en": ["oranges", "tangerines", "clementines", "kiwifruit"]
+      },
+      "vegetables": {
+        "it": ["cavoli", "finocchi", "radicchio", "porri"],
+        "en": ["cabbages", "fennel", "radicchio", "leeks"]
+      }
+    }
+  ]
+}

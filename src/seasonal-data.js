@@ -1,14 +1,28 @@
-// Seasonal data tailored for Emilia-Romagna / Bologna plain (Northern Italy).
-// Sources: consolidated seasonal norms for Italy; adapted for local availability.
-// Names are in Italian to match local markets.
+import fs from 'node:fs'
+import path from 'node:path'
 
-export function getData() {
-  return { months }
+// Loads bilingual seasonal data from JSON files.
+// Default dataset = our curated Bologna/Northern Italy list (as provided earlier).
+// Alt dataset = a regional/institutional-flavored variant derived from public calendars.
+
+export function getData(source = 'default') {
+  const file =
+    source === 'regional'
+      ? path.resolve(
+          new URL('./', import.meta.url).pathname,
+          '../data/seasonal-regional.json'
+        )
+      : path.resolve(
+          new URL('./', import.meta.url).pathname,
+          '../data/seasonal-default.json'
+        )
+  const raw = fs.readFileSync(file, 'utf8')
+  const data = JSON.parse(raw)
+  return data
 }
 
 export function monthIndexFromInput(input) {
   if (typeof input === 'number') {
-    // already 0-11
     return Math.max(0, Math.min(11, input))
   }
   if (input == null) return new Date().getMonth()
@@ -24,8 +38,8 @@ export function monthIndexFromInput(input) {
   process.exit(2)
 }
 
-export function monthNameIt(idx) {
-  return MONTHS_IT[idx]
+export function monthName(idx, lang = 'it') {
+  return (lang === 'en' ? MONTHS_EN : MONTHS_IT)[idx]
 }
 
 export function detectSeason(monthIdx) {
@@ -34,6 +48,24 @@ export function detectSeason(monthIdx) {
   if ([5, 6, 7].includes(monthIdx)) return 'summer'
   if ([8, 9, 10].includes(monthIdx)) return 'autumn'
   return ''
+}
+
+export function t(key, lang = 'it') {
+  const map = {
+    FRUIT: { it: 'FRUTTA', en: 'FRUIT' },
+    VEGETABLES: { it: 'VERDURA', en: 'VEGETABLES' },
+    SEASON: { it: 'Stagione', en: 'Season' },
+    MONTH: { it: 'Mese', en: 'Month' },
+    LOCATION: {
+      it: 'Bologna (Italia Settentrionale)',
+      en: 'Bologna (Northern Italy)',
+    },
+    WINTER: { it: 'Inverno', en: 'Winter' },
+    SPRING: { it: 'Primavera', en: 'Spring' },
+    SUMMER: { it: 'Estate', en: 'Summer' },
+    AUTUMN: { it: 'Autunno', en: 'Autumn' },
+  }
+  return (map[key] && map[key][lang]) || key
 }
 
 const MONTHS_IT = [
@@ -49,6 +81,21 @@ const MONTHS_IT = [
   'Ottobre',
   'Novembre',
   'Dicembre',
+]
+
+const MONTHS_EN = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ]
 
 const MONTHS_MAP = new Map([
@@ -78,7 +125,7 @@ const MONTHS_MAP = new Map([
   ['ottobre', 9],
   ['novembre', 10],
   ['dicembre', 11],
-  // Abbreviations
+  // Abbreviations EN
   ['jan', 0],
   ['feb', 1],
   ['mar', 2],
@@ -92,10 +139,8 @@ const MONTHS_MAP = new Map([
   ['oct', 9],
   ['nov', 10],
   ['dec', 11],
+  // Abbreviations IT
   ['gen', 0],
-  ['feb', 1],
-  ['mar', 2],
-  ['apr', 3],
   ['mag', 4],
   ['giu', 5],
   ['lug', 6],
@@ -105,215 +150,3 @@ const MONTHS_MAP = new Map([
   ['nov', 10],
   ['dic', 11],
 ])
-
-// Month-by-month lists (not exhaustive, but locally realistic)
-const months = [
-  // Gennaio
-  {
-    fruits: [
-      'arance',
-      'mandarini',
-      'clementine',
-      'pompelmi',
-      'kiwi',
-      'mele',
-      'pere',
-    ],
-    vegetables: [
-      'cavoli',
-      'cavolfiore',
-      'broccoli',
-      'finocchi',
-      'porri',
-      'bietole',
-      'spinaci',
-      'radicchio',
-      'carote',
-      'patate',
-    ],
-  },
-  // Febbraio
-  {
-    fruits: ['arance', 'mandarini', 'kiwi', 'mele', 'pere', 'limoni'],
-    vegetables: [
-      'cavoli',
-      'cavolfiore',
-      'broccoli',
-      'finocchi',
-      'porri',
-      'radicchio',
-      'bietole',
-      'carote',
-      'patate',
-    ],
-  },
-  // Marzo
-  {
-    fruits: ['kiwi', 'mele tardive', 'pere tardive', 'limoni'],
-    vegetables: [
-      'asparagi',
-      'carciofi',
-      'spinaci',
-      'bietole',
-      'lattuga',
-      'ravanelli',
-      'piselli',
-      'cavolfiore tardivo',
-      'porri',
-    ],
-  },
-  // Aprile
-  {
-    fruits: ['fragole', 'limoni'],
-    vegetables: [
-      'asparagi',
-      'carciofi',
-      'fave',
-      'piselli',
-      'spinaci',
-      'lattuga',
-      'cipollotti',
-      'bietole',
-    ],
-  },
-  // Maggio
-  {
-    fruits: ['fragole', 'ciliegie', 'nespole'],
-    vegetables: [
-      'asparagi',
-      'zucchine',
-      'fave',
-      'piselli',
-      'lattuga',
-      'spinaci',
-      'basilico',
-      'carote',
-      'patate novelle',
-    ],
-  },
-  // Giugno
-  {
-    fruits: ['ciliegie', 'albicocche', 'pesche', 'fragole tardive', 'meloni'],
-    vegetables: [
-      'zucchine',
-      'fagiolini',
-      'pomodori',
-      'melanzane',
-      'peperoni',
-      'cetrioli',
-      'insalate',
-      'bietole',
-    ],
-  },
-  // Luglio
-  {
-    fruits: ['pesche', 'albicocche', 'susine', 'meloni', 'angurie', 'more'],
-    vegetables: [
-      'pomodori',
-      'zucchine',
-      'melanzane',
-      'peperoni',
-      'fagiolini',
-      'cetrioli',
-      'insalate',
-      'basilico',
-    ],
-  },
-  // Agosto
-  {
-    fruits: ['pesche', 'susine', 'fichi', 'angurie', 'meloni', 'uva precoce'],
-    vegetables: [
-      'pomodori',
-      'melanzane',
-      'peperoni',
-      'zucchine',
-      'fagiolini',
-      'bietole',
-      'insalate',
-    ],
-  },
-  // Settembre
-  {
-    fruits: [
-      'uva',
-      'fichi',
-      'mele nuove',
-      'pere nuove',
-      'susine tardive',
-      'more tardive',
-    ],
-    vegetables: [
-      'pomodori',
-      'zucchine tardive',
-      'peperoni',
-      'melanzane',
-      'zucca',
-      'bietole',
-      'insalate',
-      'fagiolini',
-    ],
-  },
-  // Ottobre
-  {
-    fruits: ['uva tardiva', 'mele', 'pere', 'cachi', 'melograni', 'castagne'],
-    vegetables: [
-      'zucca',
-      'cavoli',
-      'cavolfiore',
-      'broccoli',
-      'radicchio precoce',
-      'porri',
-      'bietole',
-      'carote',
-      'patate',
-    ],
-  },
-  // Novembre
-  {
-    fruits: [
-      'mele',
-      'pere',
-      'kiwi',
-      'cachi',
-      'melograni',
-      'castagne',
-      'agrumi iniziali',
-    ],
-    vegetables: [
-      'cavoli',
-      'cavolfiore',
-      'broccoli',
-      'finocchi',
-      'radicchio',
-      'porri',
-      'bietole',
-      'carote',
-      'patate',
-      'zucca',
-    ],
-  },
-  // Dicembre
-  {
-    fruits: [
-      'arance',
-      'mandarini',
-      'clementine',
-      'pompelmi',
-      'kiwi',
-      'mele',
-      'pere',
-      'melograni tardivi',
-    ],
-    vegetables: [
-      'cavoli',
-      'cavolfiore',
-      'broccoli',
-      'finocchi',
-      'radicchio',
-      'porri',
-      'bietole',
-      'carote',
-      'patate',
-    ],
-  },
-]

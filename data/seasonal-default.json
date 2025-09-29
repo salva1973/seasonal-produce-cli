@@ -1,0 +1,452 @@
+{
+  "location": {
+    "it": "Bologna (Italia Settentrionale)",
+    "en": "Bologna (Northern Italy)"
+  },
+  "months": [
+    {
+      "fruits": {
+        "it": [
+          "arance",
+          "mandarini",
+          "clementine",
+          "pompelmi",
+          "kiwi",
+          "mele",
+          "pere"
+        ],
+        "en": [
+          "oranges",
+          "tangerines",
+          "clementines",
+          "grapefruits",
+          "kiwifruit",
+          "apples",
+          "pears"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "finocchi",
+          "porri",
+          "bietole",
+          "spinaci",
+          "radicchio",
+          "carote",
+          "patate"
+        ],
+        "en": [
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "fennel",
+          "leeks",
+          "chard",
+          "spinach",
+          "radicchio",
+          "carrots",
+          "potatoes"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["arance", "mandarini", "kiwi", "mele", "pere", "limoni"],
+        "en": [
+          "oranges",
+          "tangerines",
+          "kiwifruit",
+          "apples",
+          "pears",
+          "lemons"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "finocchi",
+          "porri",
+          "radicchio",
+          "bietole",
+          "carote",
+          "patate"
+        ],
+        "en": [
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "fennel",
+          "leeks",
+          "radicchio",
+          "chard",
+          "carrots",
+          "potatoes"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["kiwi", "mele tardive", "pere tardive", "limoni"],
+        "en": ["kiwifruit", "late apples", "late pears", "lemons"]
+      },
+      "vegetables": {
+        "it": [
+          "asparagi",
+          "carciofi",
+          "spinaci",
+          "bietole",
+          "lattuga",
+          "ravanelli",
+          "piselli",
+          "cavolfiore tardivo",
+          "porri"
+        ],
+        "en": [
+          "asparagus",
+          "artichokes",
+          "spinach",
+          "chard",
+          "lettuce",
+          "radishes",
+          "peas",
+          "late cauliflower",
+          "leeks"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["fragole", "limoni"],
+        "en": ["strawberries", "lemons"]
+      },
+      "vegetables": {
+        "it": [
+          "asparagi",
+          "carciofi",
+          "fave",
+          "piselli",
+          "spinaci",
+          "lattuga",
+          "cipollotti",
+          "bietole"
+        ],
+        "en": [
+          "asparagus",
+          "artichokes",
+          "broad beans",
+          "peas",
+          "spinach",
+          "lettuce",
+          "spring onions",
+          "chard"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["fragole", "ciliegie", "nespole"],
+        "en": ["strawberries", "cherries", "loquats"]
+      },
+      "vegetables": {
+        "it": [
+          "asparagi",
+          "zucchine",
+          "fave",
+          "piselli",
+          "lattuga",
+          "spinaci",
+          "basilico",
+          "carote",
+          "patate novelle"
+        ],
+        "en": [
+          "asparagus",
+          "zucchini",
+          "broad beans",
+          "peas",
+          "lettuce",
+          "spinach",
+          "basil",
+          "carrots",
+          "new potatoes"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["ciliegie", "albicocche", "pesche", "fragole tardive", "meloni"],
+        "en": ["cherries", "apricots", "peaches", "late strawberries", "melons"]
+      },
+      "vegetables": {
+        "it": [
+          "zucchine",
+          "fagiolini",
+          "pomodori",
+          "melanzane",
+          "peperoni",
+          "cetrioli",
+          "insalate",
+          "bietole"
+        ],
+        "en": [
+          "zucchini",
+          "green beans",
+          "tomatoes",
+          "eggplants",
+          "peppers",
+          "cucumbers",
+          "salad greens",
+          "chard"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["pesche", "albicocche", "susine", "meloni", "angurie", "more"],
+        "en": [
+          "peaches",
+          "apricots",
+          "plums",
+          "melons",
+          "watermelons",
+          "blackberries"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "pomodori",
+          "zucchine",
+          "melanzane",
+          "peperoni",
+          "fagiolini",
+          "cetrioli",
+          "insalate",
+          "basilico"
+        ],
+        "en": [
+          "tomatoes",
+          "zucchini",
+          "eggplants",
+          "peppers",
+          "green beans",
+          "cucumbers",
+          "salad greens",
+          "basil"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["pesche", "susine", "fichi", "angurie", "meloni", "uva precoce"],
+        "en": [
+          "peaches",
+          "plums",
+          "figs",
+          "watermelons",
+          "melons",
+          "early grapes"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "pomodori",
+          "melanzane",
+          "peperoni",
+          "zucchine",
+          "fagiolini",
+          "bietole",
+          "insalate"
+        ],
+        "en": [
+          "tomatoes",
+          "eggplants",
+          "peppers",
+          "zucchini",
+          "green beans",
+          "chard",
+          "salad greens"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": [
+          "uva",
+          "fichi",
+          "mele nuove",
+          "pere nuove",
+          "susine tardive",
+          "more tardive"
+        ],
+        "en": [
+          "grapes",
+          "figs",
+          "new apples",
+          "new pears",
+          "late plums",
+          "late blackberries"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "pomodori",
+          "zucchine tardive",
+          "peperoni",
+          "melanzane",
+          "zucca",
+          "bietole",
+          "insalate",
+          "fagiolini"
+        ],
+        "en": [
+          "tomatoes",
+          "late zucchini",
+          "peppers",
+          "eggplants",
+          "pumpkin",
+          "chard",
+          "salad greens",
+          "green beans"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": ["uva tardiva", "mele", "pere", "cachi", "melograni", "castagne"],
+        "en": [
+          "late grapes",
+          "apples",
+          "pears",
+          "persimmons",
+          "pomegranates",
+          "chestnuts"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "zucca",
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "radicchio precoce",
+          "porri",
+          "bietole",
+          "carote",
+          "patate"
+        ],
+        "en": [
+          "pumpkin",
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "early radicchio",
+          "leeks",
+          "chard",
+          "carrots",
+          "potatoes"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": [
+          "mele",
+          "pere",
+          "kiwi",
+          "cachi",
+          "melograni",
+          "castagne",
+          "agrumi iniziali"
+        ],
+        "en": [
+          "apples",
+          "pears",
+          "kiwifruit",
+          "persimmons",
+          "pomegranates",
+          "chestnuts",
+          "early citrus"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "finocchi",
+          "radicchio",
+          "porri",
+          "bietole",
+          "carote",
+          "patate",
+          "zucca"
+        ],
+        "en": [
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "fennel",
+          "radicchio",
+          "leeks",
+          "chard",
+          "carrots",
+          "potatoes",
+          "pumpkin"
+        ]
+      }
+    },
+    {
+      "fruits": {
+        "it": [
+          "arance",
+          "mandarini",
+          "clementine",
+          "pompelmi",
+          "kiwi",
+          "mele",
+          "pere",
+          "melograni tardivi"
+        ],
+        "en": [
+          "oranges",
+          "tangerines",
+          "clementines",
+          "grapefruits",
+          "kiwifruit",
+          "apples",
+          "pears",
+          "late pomegranates"
+        ]
+      },
+      "vegetables": {
+        "it": [
+          "cavoli",
+          "cavolfiore",
+          "broccoli",
+          "finocchi",
+          "radicchio",
+          "porri",
+          "bietole",
+          "carote",
+          "patate"
+        ],
+        "en": [
+          "cabbages",
+          "cauliflower",
+          "broccoli",
+          "fennel",
+          "radicchio",
+          "leeks",
+          "chard",
+          "carrots",
+          "potatoes"
+        ]
+      }
+    }
+  ]
+}

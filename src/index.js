@@ -1,11 +1,28 @@
 import {
   getData,
   monthIndexFromInput,
-  monthNameIt,
+  monthName,
   detectSeason,
+  t,
 } from './seasonal-data.js'
 
-const HELP = `\nSeasonal Produce — Bologna (Northern Italy)\n\nUsage:\n  seasonal-produce                # current month (Europe/Rome)\n  seasonal-produce --season SUMMER\n  seasonal-produce --month august\n  seasonal-produce --month 9      # September\n\nOptions:\n  -m, --month <name|number>   Month (name in EN/IT or 1-12)\n  -s, --season <name>         Season: winter, spring, summer, autumn\n  -f, --format <fmt>          Output: table (default) | json\n  -h, --help                  Show help\n`
+const HELP = `
+Seasonal Produce — Bologna (Northern Italy)
+
+Usage:
+  seasonal-produce                     # current month (Europe/Rome)
+  seasonal-produce --season SUMMER
+  seasonal-produce --month august
+  seasonal-produce --month 9
+
+Options:
+  -m, --month <name|number>   Month (EN/IT name or 1-12)
+  -s, --season <name>         Season: winter, spring, summer, autumn
+  -f, --format <fmt>          Output: table (default) | json
+  -l, --lang <it|en>          Language (default it)
+  --source <default|regional> Dataset (default=default)
+  -h, --help                  Show help
+`
 
 export async function main() {
   const argv = process.argv.slice(2)
@@ -15,6 +32,8 @@ export async function main() {
   }
 
   const fmt = pickOption(argv, ['-f', '--format']) || 'table'
+  const lang = (pickOption(argv, ['-l', '--lang']) || 'it').toLowerCase()
+  const source = (pickOption(argv, ['--source']) || 'default').toLowerCase()
   const seasonOpt = (pickOption(argv, ['-s', '--season']) || '').toLowerCase()
   const monthOptRaw = pickOption(argv, ['-m', '--month'])
 
@@ -26,7 +45,7 @@ export async function main() {
   const monthIdx = monthIndexFromInput(monthOptRaw ?? tzNow.getMonth())
   const season = seasonOpt || detectSeason(monthIdx)
 
-  const data = getData()
+  const data = getData(source)
 
   if (seasonOpt && !['winter', 'spring', 'summer', 'autumn'].includes(season)) {
     console.error('Unknown season. Use: winter, spring, summer, autumn')
@@ -38,32 +57,46 @@ export async function main() {
     process.exit(2)
   }
 
-  // If user provided a month explicitly, show that month. Otherwise show all months for the season.
+  if (!['it', 'en'].includes(lang)) {
+    console.error('Invalid language. Use: it | en')
+    process.exit(2)
+  }
+
+  const langKey = lang === 'en' ? 'en' : 'it'
+
   if (monthOptRaw != null) {
     const monthData = data.months[monthIdx]
+    const fruits = monthData.fruits[langKey]
+    const vegetables = monthData.vegetables[langKey]
     output({
-      scope: `Month: ${monthNameIt(monthIdx)} — Bologna (Northern Italy)`,
-      fruits: monthData.fruits,
-      vegetables: monthData.vegetables,
+      scope: `${t('MONTH', lang)}: ${monthName(monthIdx, lang)} — ${t(
+        'LOCATION',
+        lang
+      )}`,
+      fruits,
+      vegetables,
       format: fmt,
+      lang,
+      source,
     })
     return
   }
 
-  // Show the season overview (3 months)
   const seasonMonths = monthsForSeason(season)
   const acc = { fruits: new Set(), vegetables: new Set() }
   for (const mi of seasonMonths) {
-    for (const f of data.months[mi].fruits) acc.fruits.add(f)
-    for (const v of data.months[mi].vegetables) acc.vegetables.add(v)
+    for (const f of data.months[mi].fruits[langKey]) acc.fruits.add(f)
+    for (const v of data.months[mi].vegetables[langKey]) acc.vegetables.add(v)
   }
   output({
-    scope: `Season: ${capitalize(season)} — ${seasonMonths
-      .map(monthNameIt)
-      .join(', ')} — Bologna (Northern Italy)`,
-    fruits: [...acc.fruits].sort((a, b) => a.localeCompare(b, 'it')),
-    vegetables: [...acc.vegetables].sort((a, b) => a.localeCompare(b, 'it')),
+    scope: `${t('SEASON', lang)}: ${seasonLabel(season, lang)} — ${seasonMonths
+      .map((i) => monthName(i, lang))
+      .join(', ')} — ${t('LOCATION', lang)}`,
+    fruits: [...acc.fruits].sort((a, b) => a.localeCompare(b, lang)),
+    vegetables: [...acc.vegetables].sort((a, b) => a.localeCompare(b, lang)),
     format: fmt,
+    lang,
+    source,
   })
 }
 
@@ -88,11 +121,21 @@ function monthsForSeason(season) {
   }
 }
 
-function output({ scope, fruits, vegetables, format }) {
+function seasonLabel(s, lang) {
+  const map = {
+    winter: 'WINTER',
+    spring: 'SPRING',
+    summer: 'SUMMER',
+    autumn: 'AUTUMN',
+  }
+  return t(map[s] || s, lang)
+}
+
+function output({ scope, fruits, vegetables, format, lang, source }) {
   if (format === 'json') {
     console.log(
       JSON.stringify(
-        { scope, location: 'Bologna, Northern Italy', fruits, vegetables },
+        { scope, location: t('LOCATION', lang), source, fruits, vegetables },
         null,
         2
       )
@@ -100,21 +143,21 @@ function output({ scope, fruits, vegetables, format }) {
     return
   }
 
-  console.log(`\n${scope}\n`)
+  console.log(`
+${scope}
+`)
   const lines = []
-  const maxLen = Math.max(fruits.length, vegetables.length)
-  const left = ['FRUTTA'].concat(fruits)
-  const right = ['VERDURA'].concat(vegetables)
+  const left = [t('FRUIT', lang)].concat(fruits)
+  const right = [t('VEGETABLES', lang)].concat(vegetables)
   const colW = 28
-  for (let i = 0; i < Math.max(left.length, right.length); i++) {
-    const l = left[i] || ''
-    const r = right[i] || ''
-    lines.push(pad(l, colW) + ' | ' + pad(r, colW))
-  }
+  const rows = Math.max(left.length, right.length)
+
   const sep = '-'.repeat(colW) + '+' + '-'.repeat(colW + 2)
   console.log(sep)
-  for (let i = 0; i < lines.length; i++) {
-    console.log(lines[i])
+  for (let i = 0; i < rows; i++) {
+    const l = left[i] || ''
+    const r = right[i] || ''
+    console.log(pad(l, colW) + ' | ' + pad(r, colW))
     if (i === 0) console.log(sep)
   }
   console.log(sep)
@@ -123,8 +166,4 @@ function output({ scope, fruits, vegetables, format }) {
 function pad(s, w) {
   const t = s.toString()
   return t + ' '.repeat(Math.max(0, w - t.length))
-}
-
-function capitalize(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1)
 }

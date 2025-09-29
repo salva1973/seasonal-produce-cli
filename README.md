@@ -39,6 +39,20 @@ Output as JSON:
 seasonal-produce -s autumn -f json | jq
 ```
 
+### New options
+
+- `--source <default|regional>`: choose dataset (default = our curated Bologna dataset; `regional` = variant based on regional/institutional calendars)
+- `-l, --lang <it|en>`: output language (default `it`)
+
+### Examples
+
+```bash
+seasonal-produce                                 # mese corrente in IT
+seasonal-produce -l en                           # current month in EN
+seasonal-produce --season summer --source regional
+seasonal-produce --month settembre -l en -f json
+```
+
 ## Notes
 
 - Location is fixed to **Bologna / Emilia-Romagna** and nearby Po Valley conditions.
